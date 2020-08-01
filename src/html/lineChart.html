@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style>
+
+   .tooltip{
+    position      : absolute;
+    text-align    : center;
+    max-width     : 80px;
+    max-height    : 50px;
+    padding       : 8px;
+    border        : solid;
+    border-radius : 8px;
+    margin-top    : -30px;
+    font          : 12px sans-serif;
+    background    : white;
+    color         : steelblue;
+    pointer-events: none;
+    }
+    .tooltip-left::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0px;
+  left: 0;
+  top: 50%;
+  border: 15px solid transparent;
+  border-left: 0;
+  border-right: 15px solid #5494db;
+  transform: translate(calc(-100% - 5px), -50%);
+}
+
+.tooltip-top::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0px;
+  left: 50%;
+  top: 0;
+  border: 15px solid transparent;
+  border-top: 0;
+  border-bottom: 15px solid #5494db;
+  transform: translate(-50%, calc(-100% - 5px));
+}
+
+.tooltip-right::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0px;
+  right: 0;
+  top: 50%;
+  border: 15px solid transparent;
+  border-right: 0;
+  border-left: 15px solid #5494db;
+  transform: translate(calc(100% + 5px), -50%);
+}
+
+.tooltip-bottom::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0px;
+  left: 50%;
+  bottom: 0;
+  border: 15px solid transparent;
+  border-bottom: 0;
+  border-top: 15px solid #5494db;
+  transform: translate(-50%, calc(100% + 5px));
+}
+   .line {
+     fill: none;
+     stroke: steelblue;
+     stroke-width: 4px;
+   }
+
+   .fline{
+     fill: none;
+     stroke: purple;
+     stroke-width: 4px;
+   }
+
+   .bar {
+		  fill: steelblue;
+		  shape-rendering: crispEdges;
+		}
+
+		.axis path, .axis line {
+		  fill: none;
+		  stroke: #000;
+		  shape-rendering: crispEdges;
+		}
+
+  .divMargin{
+    margin-top: 10px 0;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    }
+  .divSize{
+    width: 1200px;
+    height: 250px;
+  }
+  .divGroupMargin{
+    margin-top: 10px 0;
+    margin-bottom: 10px;
+    margin-left: 100px;
+    }
+      </style>
+    <title></title>
+      <script src="https://d3js.org/d3.v5.min.js"></script>
+      <script src="../javascript/lineChart.js"></script>
+      <link rel="stylesheet" type="text/css" href="../css/style.css">
+  </head>
+  <body >
+    <div class="header">
+      <h1>Covid-19 Analysis</h1>
+        <a href="lineChartD.html" class="next button" style="float:right" >Next: Fatalities Line Chart &raquo;</a>
+         <div style="clear:both"></div>
+        <!--div id="listBox">
+        Select : <select id="case-sort">
+              <option value="cases" onclick="selectCasesOrFatalities('cases')">Confirmed Cases</option>
+              <option value="fatalities" onclick="selectCasesOrFatalities('fatalities')">Fatalities</option>
+          </select>
+        </div -->
+    </div>
+    <div class = "p">
+      <h2><p >Covid-19 Cumulative Confirmed Cases Line Chart</p></h2>
+      <p class="word-Wrap"> Charting the outbreak per date allows us to see the succession of covid impact in the Unites States.
+        The starting point for this chart is from January 21st(as per data available from Nytimes github repo)
+        with the trend line following the number of days since that event.The chart helps us to visualize confirmed cases on a linear scale.</p>
+       <p class="word-Wrap">Following Line charts shows cumulative confirmed Covid-19 cases in the USA per day starting January till July 2020. </p>
+    </div>
+    <br/>
+    </br>
+    <div id='lineChart' ></div>
+    <div id = "casesDiv" class="divMargin" >
+      <svg></svg>
+
+      <div id = "table" class = "subDiv">
+          Mouse over the trend line to see the case count for that month.
+         <p class="word-Wrap textAlign">Confirmed Cases by July 23 in the USA:</p>
+        <p class="subText">4050126</p>
+      </div>
+    <div class = "p">
+      <h2><p >Covid-19 Cumulative Confirmed Cases Line Chart State Level Distribution </p></h2>
+     <p class="word-Wrap">State level bifercation of the confirmed covid-19 cases displayed in the form of trend lines.
+       Each state has a different color differentiating it from the other states.</p>
+    </div>
+    <div id='stateLineChart' class="divGroupMargin divSize">
+    </div>
+  </div>
+
+
+
+
+    <script>loadData(false)</script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+      <script src="https://d3js.org/d3.v5.min.js"></script>
+      <script src="../javascript/lineChart.js"></script>
+      <link rel="stylesheet" type="text/css" href="../css/style.css">
+  </head>
+  <body >
+    <div class="header">
+      <h1>Covid-19 Analysis</h1>
+       <a href="barchart.html" class="next" style="float:right">Next: Cases Bar Chart &raquo;</a>
+       <a href="lineChart.html" class="previous" style="float:left;margin-right: 70%">&laquo; Previous</a>
+       <div style="clear:both"></div>
+    </div>
+    <div class = "p">
+      <h2><p >Covid-19 Cumulative Deaths Line Chart</p></h2>
+       <p class="word-Wrap">Following Line charts shows cumulative Covid-19 Deaths in the USA per day starting Jan 2020 till July 24th 2020.
+                           The chart helps us to visualize deaths on a linear scale.</p>
+    </div>
+    <br/>
+    </br>
+    <div>
+    <div id='lineChart' class="divMargin"></div>
+
+
+  <div id="fatalitisChartDiv" class="divMargin">
+    <svg id = "fatalitisChart"></svg>
+
+    <div id = "table" class = "subDiv">
+        Mouse over the trend line to see the deaths count for that month.
+       <p class="word-Wrap">Deaths by July 23 in the USA:</p>
+      <p class="subText">145428</p>
+    </div>
+    <div class = "p">
+      <h2><p >Covid-19 Cumulative Deaths Line Chart State Level Distribution </p></h2>
+       <p class="word-Wrap">State level bifercation of the confirmed covid-19 deaths displayed in the form of trend lines.
+         Each state has a different color differentiating it from the other states. Following Line charts shows cumulative Covid-19 deaths for each state per day starting Jan 2020 till July 24th 2020. </p>
+    </div>
+    <div id='stateFatalityLineChart' class="divGroupMargin divSize">
+    </div>
+</div>
+    <script>loadData(true)</script>
+  </body>
+</html>

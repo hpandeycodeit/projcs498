@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style>
+
+      .tooltip{
+    position      : absolute;
+    text-align    : center;
+    max-width     : 80px;
+    max-height    : 40px;
+    padding       : 8px;
+    border        : none;
+    border-radius : 8px;
+    margin-top    : -30px;
+    font          : 12px sans-serif;
+    background    : black;
+    color         : white;
+    pointer-events: none;
+    }
+    .bar {
+      // fill: steelblue;
+       fill-opacity: .9;
+   }
+      </style>
+    <title></title>
+      <script src="https://d3js.org/d3.v5.min.js"></script>
+      <script src="../javascript/main.js"></script>
+      <link rel="stylesheet" type="text/css" href="../css/style.css">
+  </head>
+  <body >
+
+  <div class="header">
+    <h1>Covid-19 Analysis</h1>
+    <div class=""><a href="barchart.html" class="previous" style="float:left">&laquo; Previous</a>
+      <a href="linechart.html" class="next" style="float:right">Home</a>
+    </div>
+    <div style="clear:both"></div>
+  </div>
+  <div class = "p">
+    <h2><p >Covid-19 Cumulative Deaths Bar Chart</p></h2>
+    <p class="word-Wrap">Following Bar charts shows confirmed Covid-19 Deaths per State. New York being at the top with 32378 confirmed cases and states: Vermont, Montana, Hawaii, Wyoming,Alaska, Virgin Islands, Guam, Mariana Islands have deaths count 100 or less.
+     Northern Mariana Islands at the bottom with less than 1000 cases as per July 24th </p>
+  </div>
+
+    <!--svg  viewBox="0 0 400px 300" preserveAspectRatio="xMinyMid meet"></svg -->
+    <!--svg  viewBox="0 0 400px 300" preserveAspectRatio="xMinyMid meet"></svg -->
+    <div class =" divMargin divMarginBarChart">
+        <svg></svg>
+        <div id = "table" class = "subDiv textAlign" style="padding-top: 120px">
+            Mouse over the bar to see the case count for state.
+           <p class="word-Wrap textAlign">State with maximum deaths:</p>
+            <p class="subText"> California: 32,278</p>
+            <p class="word-Wrap textAlign">State with minimum deaths:</p>
+            <p class="subText"> Northern Mariana Islands: 2</p>
+
+            Vermont, Montana, Hawaii, Wyoming,Alaska, Virgin Islands, Guam, Mariana Islands have deaths count 100 or less and bars are not visible due to less count as per the scale
+        </div>
+    </div>
+
+    <script>main(true) </script>
+    <div id='chartD'></div>
+
+  </body>
+</html>

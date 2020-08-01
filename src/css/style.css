@@ -1,0 +1,165 @@
+.header {
+  background-color: steelblue;
+  padding: 4px;
+  text-align: center;
+}
+
+div.p{
+  text-align: center;
+  margin: auto;
+  width: 1000px;
+
+}
+
+.word-Wrap{
+   word-wrap: break-word;
+}
+
+div.button{
+  margin-left: 80%;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+
+.next {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+
+   .tooltip{
+    position      : absolute;
+    text-align    : center;
+    max-width     : 80px;
+    max-height    : 50px;
+    padding       : 8px;
+    border        : solid;
+    border-radius : 8px;
+    margin-top    : -30px;
+    font          : 12px sans-serif;
+    background    : white;
+    color         : steelblue;
+    pointer-events: none;
+    }
+    .tooltip-left::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0px;
+  left: 0;
+  top: 50%;
+  border: 15px solid transparent;
+  border-left: 0;
+  border-right: 15px solid #5494db;
+  transform: translate(calc(-100% - 5px), -50%);
+}
+
+.tooltip-top::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0px;
+  left: 50%;
+  top: 0;
+  border: 15px solid transparent;
+  border-top: 0;
+  border-bottom: 15px solid #5494db;
+  transform: translate(-50%, calc(-100% - 5px));
+}
+
+.tooltip-right::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0px;
+  right: 0;
+  top: 50%;
+  border: 15px solid transparent;
+  border-right: 0;
+  border-left: 15px solid #5494db;
+  transform: translate(calc(100% + 5px), -50%);
+}
+
+.tooltip-bottom::before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0px;
+  left: 50%;
+  bottom: 0;
+  border: 15px solid transparent;
+  border-bottom: 0;
+  border-top: 15px solid #5494db;
+  transform: translate(-50%, calc(100% + 5px));
+}
+   .line {
+     fill: none;
+     stroke: steelblue;
+     stroke-width: 4px;
+   }
+
+   .fline{
+     fill: none;
+     stroke: purple;
+     stroke-width: 4px;
+   }
+
+   .bar {
+		  fill: steelblue;
+		  shape-rendering: crispEdges;
+		}
+
+		.axis path, .axis line {
+		  fill: none;
+		  stroke: #000;
+		  shape-rendering: crispEdges;
+		}
+
+  .divMargin{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 40px;
+    }
+  .divMarginBarChart{
+    margin-top: -90px;
+  }
+  .divSize{
+    width: 1400px;
+    height: 250px;
+  }
+  .divGroupMargin{
+    margin-top: 10px 0;
+    margin-bottom: 10px;
+    margin-left: 100px;
+    }
+.subText{
+  text-align: center;
+  font-weight: 900;
+}
+
+.textAlign{
+    text-align: center;
+}
+.subDiv{
+  float: right;
+  padding-right: 100px;
+  width:150px
+}
