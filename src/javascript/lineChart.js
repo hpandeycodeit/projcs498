@@ -2,7 +2,7 @@
 function loadData(isFatalityChart){
   console.log(isFatalityChart)
   var parseDate = d3.timeFormat("%Y-%m-%d");
-  d3.csv('https://raw.githubusercontent.com/hpandeycodeit/schoolproject/master/covid-19DS.csv' ).then(function(data){
+  d3.csv('https://raw.githubusercontent.com/hpandeycodeit/schoolproject/master/ds/covid-19DS.csv' ).then(function(data){
     //console.log(data[1609]);
     var formatData = data.map(function(d) {
         return {

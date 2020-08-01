@@ -6,7 +6,7 @@ function main(isFatalityChart)
 }
 
 function load(isFatalityChart){
-  const data = d3.csv('https://raw.githubusercontent.com/hpandeycodeit/schoolproject/master/covid-19DS.csv' ).then(function(data){
+  const data = d3.csv('https://raw.githubusercontent.com/hpandeycodeit/schoolproject/master/ds/covid-19DS.csv' ).then(function(data){
     console.log(data[35]);
     var formatData = data.map(function(d) {
         return {
