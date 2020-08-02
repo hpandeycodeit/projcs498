@@ -19,7 +19,7 @@ div.button{
   margin-left: 80%;
 }
 
-a {
+.buttonAnchor {
   text-decoration: none;
   display: inline-block;
   padding: 8px 16px;
@@ -118,7 +118,7 @@ a:hover {
 
    .fline{
      fill: none;
-     stroke: purple;
+     stroke: steelblue;
      stroke-width: 4px;
    }
 
@@ -161,5 +161,5 @@ a:hover {
 .subDiv{
   float: right;
   padding-right: 100px;
-  width:150px
+  width:250px
 }

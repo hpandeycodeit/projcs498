@@ -160,8 +160,8 @@ svg.append("path")
           var dayFormat= d3.timeFormat("%d")
 
           var x0 = x.invert(d3.mouse(this)[0]);
-          var i = bisect.left(gData, new Date(x0),1);
-          selectedData = gData[i-1]
+          var i = bisect.left(gData, new Date(x0));
+          selectedData = gData[i]
           div
           .html( monthNameFt(new Date(selectedData.key))+ " "+dayFormat(new Date(selectedData.key)) +"<hr/>" +"Total Cases: " + selectedData.value)
           .style('left', x(new Date(selectedData.key))+20 +  'px')

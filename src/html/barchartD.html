@@ -12,15 +12,16 @@
 
   <div class="header">
     <h1>Covid-19 Analysis</h1>
-    <div class=""><a href="barchart.html" class="previous" style="float:left">&laquo; Previous</a>
-      <a href="../../index.html" class="next" style="float:right">Home</a>
+    <div class=""><a href="barchart.html" class="previous buttonAnchor" style="float:left">&laquo; Previous</a>
+      <a href="../../index.html" class="next buttonAnchor" style="float:right">Home</a>
     </div>
     <div style="clear:both"></div>
   </div>
   <div class = "p">
     <h2><p >Covid-19 Cumulative Deaths Bar Chart</p></h2>
-    <p class="word-Wrap">Following Bar charts shows confirmed Covid-19 Deaths per State. New York being at the top with 32378 confirmed cases and states: Vermont, Montana, Hawaii, Wyoming,Alaska, Virgin Islands, Guam, Mariana Islands have deaths count 100 or less.
-     Northern Mariana Islands at the bottom with less than 1000 cases as per July 24th </p>
+    <p class="word-Wrap">Following Bar charts shows Covid-19 Deaths per State. New York being at the top with 32378 confirmed cases and states: Vermont, Montana, Hawaii, Wyoming,Alaska, Virgin Islands, Guam, Mariana Islands have deaths count 100 or less.
+     Northern Mariana Islands at the bottom with less than 1000 cases. Below chart is using the data available from Jan 21 - July 24th. </p>
+      <p  style="color:coral;">Mouse over the bar to see the case count for state. </p>
   </div>
 
     <!--svg  viewBox="0 0 400px 300" preserveAspectRatio="xMinyMid meet"></svg -->
@@ -28,13 +29,11 @@
     <div class =" divMargin divMarginBarChart">
         <svg></svg>
         <div id = "table" class = "subDiv textAlign" style="padding-top: 120px">
-           <p style="color:#FF7F50 " class = "textAlign">Mouse over the bar to see the case count for state.</p>
-           <p class="word-Wrap textAlign">State with maximum deaths:</p>
-            <p class="subText"> California: 32,278</p>
-            <p class="word-Wrap textAlign">State with minimum deaths:</p>
-            <p class="subText"> Northern Mariana Islands: 2</p>
-
-            Vermont, Montana, Hawaii, Wyoming,Alaska, Virgin Islands, Guam, Mariana Islands have deaths count 100 or less and bars are not visible due to less count as per the scale
+          <ul class="word-Wrap ">
+            <li>   State with maximum deaths  <b> California: 32,278 </b></li>
+            <li>   State with minimum deaths <b> Northern Mariana Islands: 2</b></li>
+            <li>Vermont, Montana, Hawaii, Wyoming,Alaska, Virgin Islands, Guam, Mariana Islands have deaths count 100 or less and bars are not visible due to less count as per the scale</li>
+          </ul>
         </div>
     </div>
 

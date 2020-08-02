@@ -11,7 +11,7 @@
   <body >
     <div class="header">
       <h1>Covid-19 Analysis</h1>
-        <a href="src/html/lineChartD.html" class="next button" style="float:right" >Next: Fatalities Line Chart &raquo;</a>
+        <a href="src/html/lineChartD.html" class="next button buttonAnchor" style="float:right" >Next: Fatalities Line Chart &raquo;</a>
          <div style="clear:both"></div>
         <!--div id="listBox">
         Select : <select id="case-sort">
@@ -25,23 +25,20 @@
       <p class="word-Wrap"> Charting the outbreak per date allows us to see the succession of covid impact in the Unites States.
         The starting point for this chart is from January 21st(as per data available from Nytimes github repo)
         with the trend line following the number of days since that event.The chart helps us to visualize confirmed cases on a linear scale.</p>
-       <p class="word-Wrap">Following Line charts shows cumulative confirmed Covid-19 cases in the USA per day starting January till July 2020. </p>
+       <p class="word-Wrap">Following Line charts shows cumulative confirmed Covid-19 cases in the USA per day starting January till July 24th 2020. Data Source:<a href="https://github.com/nytimes/covid-19-data">NyTimes</a> </p>
+       <p  style="color:coral;">Mouse over the trend line to see the case count for that month </p>
     </div>
-    <br/>
-    </br>
     <div id='lineChart' ></div>
     <div id = "casesDiv" class="divMargin" >
       <svg></svg>
 
       <div id = "table" class = "subDiv">
-          <p style="color:#FF7F50 " class = "textAlign">Mouse over the trend line to see the case count for that month.</p>
-         <p class="word-Wrap textAlign">Confirmed Cases by July 23 in the USA:</p>
-        <p class="subText">4050126</p>
+         <p class="word-Wrap textAlign">Confirmed Cases by July 24 in the USA: <b>4050126</b></p>
       </div>
     <div class = "p">
       <h2><p >Covid-19 Cumulative Confirmed Cases Line Chart State Level Distribution </p></h2>
      <p class="word-Wrap">State level bifercation of the confirmed covid-19 cases displayed in the form of trend lines.
-       Each state has a different color differentiating it from the other states.</p>
+       Each state has a different color differentiating it from the other states. Following line charts include 5 Federal Districts as well. </p>
     </div>
     <div id='stateLineChart' class="divGroupMargin divSize">
     </div>

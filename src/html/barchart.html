@@ -12,38 +12,31 @@
 
   <div class="header">
     <h1>Covid-19 Analysis</h1>
-    <div class=""><a href="lineChartD.html" class="previous" style="float:left">&laquo; Previous</a>
-      <a href="barchartD.html" class="next" style="float:right">Next: Fatalities Bar Chart &raquo;</a>
+    <div class=""><a href="lineChartD.html" class="previous buttonAnchor" style="float:left">&laquo; Previous</a>
+      <a href="barchartD.html" class="next buttonAnchor" style="float:right">Next: Fatalities Bar Chart &raquo;</a>
     </div>
     <div style="clear:both"></div>
   </div>
   <div class = "p">
     <h2><p >Covid-19 Cumulative Confirmed Cases Bar Chart</p></h2>
      <p class="word-Wrap">Following Bar charts shows confirmed Covid-19 cases per State. California being at the top with 443033 confirmed cases and Virgin Islands and
-      Northern Mariana Islands at the bottom with less than 1000 cases as per July 24th </p>
+      Northern Mariana Islands at the bottom with less than 1000 cases. Below chart is using the data available from Jan 21 - July 24th</p>
+      <p  style="color:coral;">Mouse over the bar to see the case count for state. </p>
   </div>
+
 
     <!--svg  viewBox="0 0 400px 300" preserveAspectRatio="xMinyMid meet"></svg -->
     <div class =" divMargin divMarginBarChart">
         <svg></svg>
         <div id = "table" class = "subDiv textAlign" style="padding-top: 120px">
-          <p style="color:#FF7F50 " class = "textAlign">Mouse over the bar to see the case count for state.</p>
-           <p class="word-Wrap textAlign">State with maximum confirmed cases:</p>
-            <p class="subText"> California: 443033</p>
-            <p class="word-Wrap textAlign">State with minimum confirmed cases:</p>
-            <p class="subText"> Northern Mariana Islands: 38</p>
-
-            Virgin Islands and Northern Mariana Islands bars are not visible due to less count as per the scale
+          <ul class="word-Wrap">
+            <li>State with maximum confirmed cases <b>California: 443033</b></li>
+            <li>State with minimum confirmed cases  <b>Northern Mariana Islands: 38</b> </li>
+            <li>Virgin Islands and Northern Mariana Islands bars are not visible due to less count as per the scale</li>
+          </ul>
         </div>
     </div>
 
-    <!-- div id="checkbox">
-    Sort: <select id="case-sort">
-          <option value="descending" onclick="sort('descending')">Ascending</option>
-          <option value="ascending" onclick="sort('ascending')">Descending</option>
-      </select>
-    </div>
-    <div class="button"><a href="" class="next">Next &raquo;</a></div -->
 
     <script>main(false) </script>
     <div id='chart'></div>
