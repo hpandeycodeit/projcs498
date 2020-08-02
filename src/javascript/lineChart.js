@@ -3,11 +3,9 @@ function loadData(isFatalityChart){
   console.log(isFatalityChart)
   var parseDate = d3.timeFormat("%Y-%m-%d");
   d3.csv('https://raw.githubusercontent.com/hpandeycodeit/schoolproject/master/ds/covid-19DS.csv' ).then(function(data){
-    //console.log(data[1609]);
     var formatData = data.map(function(d) {
         return {
           date:  d3.timeParse("%m/%d/%Y")(d.date),
-          //date:  d3.timeParse("%Y-%m-%d")(d.date),
           cases:  parseInt(d.cases),
           state: d.state,
           deaths: parseInt(d.deaths)
@@ -84,6 +82,24 @@ var margin = {top: 10, right: 30, bottom: 50, left: 80};
               .call(d3.axisLeft(y));
 
 
+var startDate = new Date(gData[0].key)
+var endDate = new Date(gData[59].key)
+ svg
+    .append("line")
+      .attr("x1", x( startDate) )
+      .attr("x2", x( endDate) )
+      .attr("y1", - 3000000)
+      .attr("y2", y(5000))
+      .attr("stroke", "grey")
+      .attr("stroke-dasharray", "4")
+
+svg
+    .append("text")
+    .attr("x", x( endDate) + 10)
+    .attr("y", 10)
+    .text("Spike in confirmed cases observed after this point: March 20th" )
+    .style("font-size", "15px")
+
 var casesLine = d3.line()
                     .x(function(d) { return x(new Date(d.key)); })
                     .y(function(d) { return y(d.value); });
@@ -144,7 +160,6 @@ svg.append("path")
           var dayFormat= d3.timeFormat("%d")
 
           var x0 = x.invert(d3.mouse(this)[0]);
-        //  x0 =  x0.setDate(x0.getDate()+ 1)
           var i = bisect.left(gData, new Date(x0),1);
           selectedData = gData[i-1]
           div
@@ -158,7 +173,6 @@ svg.append("path")
         }
       function mouseout() {
         focus.style("opacity", 0)
-        //focusText.style("opacity", 0)
         div.style('display', 'none');
 
         }
@@ -168,7 +182,6 @@ svg.append("path")
       var stateGroups = d3.nest()
          .key(function(d) { return d.state;})
          .entries(data);
-    //console.log(stateGroups)
     allKeys = stateGroups.map(function(d){return d.key})
 
   var dataByStatePerDay = d3.nest()
@@ -201,8 +214,7 @@ svg.append("path")
 var maxDate = getMaxDate(dataByStatePerDay);
 var minDate = getMinDate(dataByStatePerDay);
 var tickVals= [minDate, maxDate];
-//  var xs = d3.scaleTime()
-//      .domain(xm).range([ 0, 100 ]).nice();
+
 
 var xs = d3.scaleTime()
   .domain([minDate, maxDate]).range([ 0, widthMargin ]);
@@ -247,7 +259,6 @@ var xs = d3.scaleTime()
           (d.values)
       })
 
-  // Add titles
   svgStates
     .append("text")
     .attr("text-anchor", "start")
@@ -260,11 +271,7 @@ var xs = d3.scaleTime()
 }
 
 function getMaxDate( data ) {
-  /*  var arr = [];
 
-    data.map(function(value) {
-        arr = arr.concat.apply(arr, value.values);
-    });*/
     var max = d3.max(data.map(function(array) {
 
       var dt = new Date(d3.max(array.values, d=> (new Date(d.key)).getTime()))
@@ -341,6 +348,25 @@ function plotFatalityLineChart(data)
              .call(d3.axisLeft(y));
 
 
+var startDate = new Date(fatalityData[0].key)
+var endDate = new Date(fatalityData[62].key)
+ svgFatalityChart
+    .append("line")
+      .attr("x1", x( startDate)) 
+      .attr("x2", x( endDate) )
+      .attr("y1", - 2500000)
+      .attr("y2", y(500))
+      .attr("stroke", "grey")
+      .attr("stroke-dasharray", "4")
+
+svgFatalityChart
+    .append("text")
+    .attr("x", x(endDate) + 10)
+    .attr("y", 10)
+    .text("Spike in deaths observed after this point: March 23rd" )
+    .style("font-size", "15px")
+
+
      var fatalityLine = d3.line()
                          .x(function(d) { return x(new Date(d.key)); })
                          .y(function(d) { return y(d.value); });
@@ -385,27 +411,18 @@ function plotFatalityLineChart(data)
        .on('mouseover', mouseover)
        .on('mousemove', mousemove)
        .on('mouseout', mouseout);
-                       // Create the circle that travels along the curve of chart
 
        var div = d3.select('#lineChart').append('div')
            .attr('class', 'tooltip')
            .style('display', 'none');
-                     // What happens when the mouse move -> show the annotations at the right positions.
      function mouseover() {
        focus.style("opacity", 1)
-       //focusText.style("opacity",1)
         div.style('display', 'inline');
 
      }
 
      function mousemove() {
-       // recover coordinate we need
-     /* var x0 = x.invert(d3.mouse(this)[0]);
-         idx = bisect.right(gData,new Date(x0));
-       selectedData = gData[idx]
-       var d = d3.select(this).data()[0]
-       div
-         .html("x:" + selectedData.date + "  -  " + "y:" + selectedData.value)*/
+
          var monthNameFt = d3.timeFormat("%B");
          var dayFormat= d3.timeFormat("%d")
 
@@ -419,24 +436,19 @@ function plotFatalityLineChart(data)
          focus
           .attr("cx", x(new Date(selectedData.key)))
           .attr("cy", y(selectedData.value))
-         /*focusText
-          //.html( monthNameFt(new Date(selectedData.key))+ " "+dayFormat(new Date(selectedData.key))  +" cases: " + selectedData.value)
-          .attr("x", x(new Date(selectedData.key))+15)
-          .attr("y", y(selectedData.value))*/
+
        }
      function mouseout() {
        focus.style("opacity", 0)
-     //      focusText.style("opacity", 0)
         div.style('display', 'none');
 
        }
 
 
 
-   var stateGroups = d3.nest() // nest function allows to group the calculation per level of a factor
+   var stateGroups = d3.nest() 
           .key(function(d) { return d.state;})
           .entries(data);
-     //console.log(stateGroups)
      allKeys = stateGroups.map(function(d){return d.key})
 
      var dataByStatePerDay = d3.nest()
