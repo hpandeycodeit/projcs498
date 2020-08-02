@@ -29,10 +29,6 @@ function loadData(isFatalityChart){
 function plotLine(data)
 {
 
-  /*total2018 = d3.sum(
-    data.filter(d => d.date ),
-    d => +d.cases
-  )*/
 
 
 var margin = {top: 10, right: 30, bottom: 50, left: 80};
@@ -56,12 +52,6 @@ var margin = {top: 10, right: 30, bottom: 50, left: 80};
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-    /*  var maxDate = d3.max(gData, d=> new Date(d.key));
-      var minDate = d3.min(gData, d=> new Date(d.key));
-      minDate = new Date(minDate.setDate(minDate.getDate()+ 1));
-      maxDate = new Date(maxDate.setDate(maxDate.getDate()+ 1));
-      console.log(minDate);
-      console.log("max is ", maxDate);*/
       var x = d3.scaleTime()
         .domain(d3.extent(gData, function(d) {
           return new Date(d.key);
@@ -93,19 +83,6 @@ var margin = {top: 10, right: 30, bottom: 50, left: 80};
       svg.append("g")
               .call(d3.axisLeft(y));
 
-    /*  svg.append("path")
-                  .datum(gData)
-                  .attr("fill", "#cce5df")
-                  .on("mouseover", function() { focus.style("display", null); })
-                  .on("mouseout", function() { focus.style("display", "none"); })
-                  .on("mousemove", mousemove)
-                  .attr("d", d3.area()
-                  .x(d => x(new Date(d.key)))
-                  .y0(y(0))
-                  .y1(d => y(d.value))
-
-                );*/
-                  // define the line
 
 var casesLine = d3.line()
                     .x(function(d) { return x(new Date(d.key)); })
@@ -115,7 +92,7 @@ svg.append("path")
       .attr("class", "line")
       .attr("fill", "none")
       .attr("stroke", "steelblue")
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 2.5)
       .attr("stroke-linejoin", "round")
       .attr("stroke-linecap", "round")
       .attr("d", casesLine);
@@ -141,13 +118,6 @@ svg.append("path")
              .attr('r', 4)
              .style("opacity", 0);
 
-         // Create the text that travels along the curve of chart
-        /* var focusText = svg
-           .append('g')
-           .append('text')
-             .style("opacity", 0)
-             .attr("text-anchor", "right")
-             .attr("alignment-baseline", "middle")*/
 
         svg
           .append('rect')
@@ -158,27 +128,18 @@ svg.append("path")
           .on('mouseover', mouseover)
           .on('mousemove', mousemove)
           .on('mouseout', mouseout);
-        // Create the circle that travels along the curve of chart
 
         var div = d3.select('#lineChart').append('div')
             .attr('class', 'tooltip')
             .style('display', 'none');
-      // What happens when the mouse move -> show the annotations at the right positions.
       function mouseover() {
         focus.style("opacity", 1)
-        //focusText.style("opacity",1)
          div.style('display', 'inline');
 
       }
 
       function mousemove() {
-        // recover coordinate we need
-      /* var x0 = x.invert(d3.mouse(this)[0]);
-          idx = bisect.right(gData,new Date(x0));
-        selectedData = gData[idx]
-        var d = d3.select(this).data()[0]
-        div
-          .html("x:" + selectedData.date + "  -  " + "y:" + selectedData.value)*/
+  
           var monthNameFt = d3.timeFormat("%B");
           var dayFormat= d3.timeFormat("%d")
 
@@ -193,10 +154,7 @@ svg.append("path")
           focus
            .attr("cx", x(new Date(selectedData.key)))
            .attr("cy", y(selectedData.value))
-          /*focusText
-           //.html( monthNameFt(new Date(selectedData.key))+ " "+dayFormat(new Date(selectedData.key))  +" cases: " + selectedData.value)
-           .attr("x", x(new Date(selectedData.key))+15)
-           .attr("y", y(selectedData.value))*/
+  
         }
       function mouseout() {
         focus.style("opacity", 0)
@@ -206,79 +164,8 @@ svg.append("path")
         }
 
 
-    /*    var insertLinebreaks = function (d) {
-          var el = d3.select(this);
-          var words = d.split(' ');
-          el.text('');
 
-          for (var i = 0; i < words.length; i++) {
-              var tspan = el.append('tspan').text(words[i]);
-              if (i > 0)
-                  tspan.attr('x', 0).attr('dy', '15');
-          }
-      };
-
-      svg.selectAll('g text html').each(insertLinebreaks);*/
-
-  /*var fData = d3.nest()
-                .key(function(d) { return d.date;})
-                .rollup(function(d) {
-                 return d3.sum(d, function(g) {return g.deaths; });
-               }).entries(data);
-      console.log(fData);
-  var fatalitiesLine = d3.line()
-                      .x(function(d) { return x(new Date(d.key)); })
-                      .y(function(d) { return y(d.value); });
-
-svg.append("path")
-    .data([fData])
-    .attr("class", "fline")
-    .attr("fill", "none")
-    .attr("stroke", "black")
-    .attr("stroke-width", 1.5)
-    .attr("stroke-linejoin", "round")
-    .attr("stroke-linecap", "round")
-    .attr("d", fatalitiesLine);
-
-      var focus = svg.append("g")
-            .attr("class", "focus")
-            .style("display", "none");
-
-        focus.append("rect")
-            .attr("class", "tooltip")
-            .attr("width", 100)
-            .attr("height", 50)
-            .attr("x", 10)
-            .attr("y", -22)
-            .attr("rx", 4)
-            .attr("ry", 4);
-
-
-      var div = d3.select('#lineChart').append('div')
-          .attr('class', 'tooltip')
-          .style('display', 'none');
-      function mouseover(){
-          div.style('display', 'inline');
-      }
-      var parseDate = d3.timeFormat("%m/%e/%Y").parse,
-          bisectDate = d3.bisector(function(d) { return d.date; }).left,
-          formatValue = d3.format(","),
-          dateFormatter = d3.timeFormat("%m/%d/%y");
-      function mousemove() {
-              var x0 = x.invert(d3.mouse(this)[0]),
-                  i = bisectDate(gData, x0, 1),
-                  d0 = gData[i - 1],
-                  d1 = gData[i],
-                  d = x0 - d0.key > d1.key - x0 ? d1 : d0;
-              focus.attr("transform", "translate(" + x(d.key) + "," + y(d.value) + ")");
-              focus.select(".tooltip-date").text(dateFormatter(d.key));
-              focus.select(".tooltip-likes").text(formatValue(d.value));
-          }
-      function mouseout(){
-          div.style('display', 'none');
-      }*/
-
-      var stateGroups = d3.nest() // nest function allows to group the calculation per level of a factor
+      var stateGroups = d3.nest()
          .key(function(d) { return d.state;})
          .entries(data);
     //console.log(stateGroups)
@@ -289,9 +176,9 @@ svg.append("path")
   .key(function(j) { return j.date; })
   .rollup(function(v) { return d3.sum(v, function(d) { return d.cases; }); })
   .entries(data);
+  dataByStatePerDay = dataByStatePerDay.slice().sort((a, b) => d3.ascending(a.key, b.key))
 
-  //console.log("dataByStatePerDay",dataByStatePerDay )
- //var jsonData=  JSON.parse(JSON.stringify(dataByStatePerDay))
+
 
  var heightSub = 210
  var widthSub = 210
@@ -341,14 +228,14 @@ var xs = d3.scaleTime()
   // color palette
   var color = d3.scaleOrdinal()
     .domain(allKeys)
-    .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf','#999999'])
+    .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#4B0082','#a65628','#f781bf','#4682B4'])
 
   // Draw the line
   svgStates
     .append("path")
       .attr("fill", "none")
       .attr("stroke", function(d){ return color(d.key) })
-      .attr("stroke-width", 1.5)
+      .attr("stroke-width", 2.5)
       .attr("d", function(d){
         return d3.line()
           .x(function(dt,i) {
@@ -462,7 +349,7 @@ function plotFatalityLineChart(data)
            .attr("class", "fline")
            .attr("fill", "none")
            .attr("stroke", "steelblue")
-           .attr("stroke-width", 1.5)
+           .attr("stroke-width", 2.5)
            .attr("stroke-linejoin", "round")
            .attr("stroke-linecap", "round")
            .attr("d", fatalityLine);
@@ -558,8 +445,7 @@ function plotFatalityLineChart(data)
      .rollup(function(v) { return d3.sum(v, function(d) { return d.deaths; }); })
      .entries(data);
 
-     //console.log("dataByStatePerDay",dataByStatePerDay )
-     //var jsonData=  JSON.parse(JSON.stringify(dataByStatePerDay))
+     dataByStatePerDay = dataByStatePerDay.slice().sort((a, b) => d3.ascending(a.key, b.key))
 
      var heightSub = 210
      var widthSub = 210
@@ -608,14 +494,14 @@ function plotFatalityLineChart(data)
      // color palette
      var color = d3.scaleOrdinal()
      .domain(allKeys)
-     .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#ffff33','#a65628','#f781bf','#999999'])
+     .range(['#e41a1c','#377eb8','#4daf4a','#984ea3','#ff7f00','#4B0082','#a65628','#f781bf','#4682B4'])
 
      // Draw the line
      svgStates
      .append("path")
        .attr("fill", "none")
        .attr("stroke", function(d){ return color(d.key) })
-       .attr("stroke-width", 1.5)
+       .attr("stroke-width", 2.5)
        .attr("d", function(d){
          return d3.line()
            .x(function(dt,i) {
